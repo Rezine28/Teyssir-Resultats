@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,33 +6,51 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 50px;
-            background-color: #f2f2f2;
+            margin: 40px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        #logo {
+            width: 200px;
+            margin-bottom: 20px;
         }
         h1 {
             color: #333;
         }
+        .infos {
+            font-size: 18px;
+            color: #555;
+        }
         input, button {
             padding: 10px;
-            margin: 5px 0;
             font-size: 16px;
+            margin: 10px 0;
         }
         #resultat {
             margin-top: 20px;
             padding: 15px;
             background-color: #fff;
             border-left: 5px solid #4CAF50;
+            display: inline-block;
+            text-align: left;
         }
         .error {
-            border-left: 5px solid #f44336;
+            border-left-color: #f44336;
+            color: red;
         }
     </style>
 </head>
 <body>
 
+    <img id="logo" src="logo.png" alt="Logo Auto-École">
     <h1>Consultez votre résultat d'examen</h1>
+    <div class="infos">
+        <strong>Auto-école TEYSSIR</strong><br>
+        Rue Mhamed khmisti, Misserghine – Algérie
+    </div>
+
     <p>Entrez votre numéro d'inscription :</p>
-    <input type="text" id="numero" placeholder="Ex: 1234">
+    <input type="text" id="numero" placeholder="Ex: 0611">
     <button onclick="chercher()">Rechercher</button>
 
     <div id="resultat"></div>
@@ -47,7 +64,7 @@
             resultatDiv.classList.remove('error');
 
             if (!numero) {
-                resultatDiv.innerHTML = 'Veuillez entrer un numéro d\'inscription.';
+                resultatDiv.innerHTML = "Veuillez entrer un numéro d'inscription.";
                 resultatDiv.classList.add('error');
                 return;
             }
@@ -57,12 +74,12 @@
                 header: true,
                 complete: function(results) {
                     const data = results.data;
-                    const candidat = data.find(c => c.Numero === numero);
-
+                    const candidat = data.find(c => c.Numéro === numero);
+                    
                     if (candidat) {
                         resultatDiv.innerHTML = `
                             <strong>Nom :</strong> ${candidat.Nom}<br>
-                            <strong>Prénom :</strong> ${candidat.Prenom}<br>
+                            <strong>Prénom :</strong> ${candidat.Prénom}<br>
                             <strong>Résultat :</strong> ${candidat.Résultat}
                         `;
                     } else {
@@ -70,7 +87,7 @@
                         resultatDiv.classList.add('error');
                     }
                 },
-                error: function(error) {
+                error: function() {
                     resultatDiv.innerHTML = 'Erreur lors du chargement des résultats.';
                     resultatDiv.classList.add('error');
                 }
