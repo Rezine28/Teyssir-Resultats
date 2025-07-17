@@ -1,8 +1,3 @@
-Nom,Prénom,Numéro,Résultat
-Messaoudi,Kheira,0611,Réussi
-Rahiel,Houria,2212,Échoué
-Rezine,Baghdad,2810,Réussi
-Besafi,Hayet,1106,Échoué
-Remichi,Soriya,1001,Réussi
-youcefsbaa,Ismahane,1002,échoué
-Meziane,Ahmed,1003,Réussi
+Nom,Prénom,Numéro,Niveau,Résultat
+Benali,Samir,0611,Code,Admis
+Bouchareb,Nora,0612,Circuit,Ajourné
