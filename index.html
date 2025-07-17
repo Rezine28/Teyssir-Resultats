@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Résultats des Examens</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,31 +11,26 @@
             padding: 20px;
             background-color: #f9f9f9;
             text-align: center;
-            box-sizing: border-box;
         }
         #logo {
-            max-width: 100%;
             width: 180px;
-            margin: 20px auto;
-            display: block;
+            margin-bottom: 20px;
         }
         h1 {
             color: #333;
-            font-size: 22px;
-            margin-bottom: 10px;
         }
         .infos {
-            font-size: 16px;
+            font-size: 18px;
             color: #555;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         input, button {
-            padding: 12px;
+            padding: 10px;
             font-size: 16px;
-            margin: 8px 0;
-            width: 100%;
-            max-width: 400px;
-            box-sizing: border-box;
+            width: 80%;
+            max-width: 300px;
+            margin: 10px auto;
+            display: block;
         }
         #resultat {
             margin-top: 20px;
@@ -44,8 +39,7 @@
             border-left: 5px solid #4CAF50;
             display: inline-block;
             text-align: left;
-            max-width: 400px;
-            width: 100%;
+            max-width: 90%;
         }
         .error {
             border-left-color: #f44336;
@@ -57,12 +51,12 @@
 
     <img id="logo" src="logo.png" alt="Logo Auto-École">
     <h1>Consultez votre résultat d'examen</h1>
+    
     <div class="infos">
         <strong>Auto-école TEYSSIR</strong><br>
         Rue Mohamed Khmisti, Misserghin – Oran
     </div>
 
-    <p>Entrez votre numéro d'inscription :</p>
     <input type="text" id="numero" placeholder="Ex: 0611">
     <button onclick="chercher()">Rechercher</button>
 
@@ -88,11 +82,12 @@
                 complete: function(results) {
                     const data = results.data;
                     const candidat = data.find(c => c.Numéro === numero);
-
+                   
                     if (candidat) {
                         resultatDiv.innerHTML = `
                             <strong>Nom :</strong> ${candidat.Nom}<br>
                             <strong>Prénom :</strong> ${candidat.Prénom}<br>
+                            <strong>Niveau :</strong> ${candidat.Niveau}<br>
                             <strong>Résultat :</strong> ${candidat.Résultat}
                         `;
                     } else {
@@ -110,4 +105,3 @@
 
 </body>
 </html>
-          
